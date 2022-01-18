@@ -1,0 +1,16 @@
+.elements__button {
+    background-image: url(../../../images/heart.png);
+    border: none;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+    transition: 0.5s;
+}
+
+.elements__button:hover {
+    opacity: 0.6;
+}
