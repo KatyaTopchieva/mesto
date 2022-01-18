@@ -1,0 +1,16 @@
+.profile__edit-button {
+    border: 1px solid #FFF;
+    background-image: url(../../../images/slash.png);
+    background-repeat: no-repeat;
+    background-color: #000;
+    background-position: center;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+    transition: 0.5s;
+}
+
+.profile__edit-button:hover {
+    opacity: 0.6;
+}

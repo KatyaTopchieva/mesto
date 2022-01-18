@@ -1,0 +1,15 @@
+.profile__edit {
+    width: 24px;
+    height: 24px;
+    align-self: center;
+}
+
+@media screen and (max-width: 540px) {
+    .profile__edit {
+        width: 18px;
+        height: 18px;
+        position: absolute;
+        top: 8px;
+        right: 9px;
+    }
+}

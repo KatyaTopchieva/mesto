@@ -3,10 +3,16 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-start;
-    width: 69%;
+    width: 68.7%;
     height: max-content;
     padding-top: 45px;
     margin: 0 auto;
+}
+
+@media screen and (max-width: 9600px) {
+    .header {
+        width: 85%;
+    }
 }
 
 @media screen and (max-width: 540px) {
