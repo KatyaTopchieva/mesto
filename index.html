@@ -19,22 +19,17 @@
         <img class="profile__avatar" src="images/Kustou.png" alt="Аватарка">
         <div class="profile__info">
           <h1 class="profile__info-name">Жак-Ив Кусто</h1>
-          <form class="profile__edit">
-            <button class="profile__edit-button"></button>
-          </form>
+          <a href="#" class="profile__edit-button"></a>
           <h2 class="profile__info-surname">Исследователь океанов</h2>
         </div>
-        <form class="profile__add">
-          <button class="profile__add-button"></button>
-        </form>
+        <a href="#" class="profile__add-button"></a>
       </section>
       <section class="elements">
         <div class="elements__card">
           <img src="images/Vladivostok.jpg" class="elements__image" alt="Владивосток">
           <div class="elements__card-name">
             <h2 class="elements__name">Владивосток</h2>
-            <form class="elements__like">
-              <button class="elements__button"></button>
+            <a href="#" class="elements__button"></a>
             </form>
           </div>
         </div>
@@ -42,45 +37,35 @@
           <img src="images/El`brus.jpg" class="elements__image" alt="Эльбрус">
           <div class="elements__card-name">
             <h2 class="elements__name">Эльбрус</h2>
-            <form class="elements__like">
-              <button class="elements__button"></button>
-            </form>
+            <a href="#" class="elements__button"></a>
           </div>
         </div>
         <div class="elements__card">
           <img src="images/Kareliya.jpg" class="elements__image" alt="Карелия">
           <div class="elements__card-name">
             <h2 class="elements__name">Карелия</h2>
-            <form class="elements__like">
-              <button class="elements__button"></button>
-            </form>
+            <a href="#" class="elements__button"></a>
           </div>
         </div>
         <div class="elements__card">
           <img src="images/Karachaevsk.png" class="elements__image" alt="Карачаево-Черкесия">
           <div class="elements__card-name">
             <h2 class="elements__name">Карачаево-Черкесия</h2>
-            <form class="elements__like">
-              <button class="elements__button"></button>
-            </form>
+            <a href="#" class="elements__button"></a>
           </div>
         </div>
         <div class="elements__card">
           <img src="images/Altai.jpg" class="elements__image" alt="Алтай">
           <div class="elements__card-name">
             <h2 class="elements__name">Алтай</h2>
-            <form class="elements__like">
-              <button class="elements__button"></button>
-            </form>
+            <a href="#" class="elements__button"></a>
           </div>
         </div>
         <div class="elements__card">
           <img src="images/Dombai.png" class="elements__image" alt="Домбай">
           <div class="elements__card-name">
             <h2 class="elements__name">Домбай</h2>
-            <form class="elements__like">
-              <button class="elements__button"></button>
-            </form>
+            <a href="#" class="elements__button"></a>
           </div>
         </div>
       </section>
@@ -88,6 +73,28 @@
     <footer class="footer">
       <h3 class="footer__text">&copy; 2020 Mesto Russia</h3>
     </footer>
+
+
+    <div class="popup">
+      <div class="popup__container">
+        <a href="#" class="popup__close-button">
+          <img class="popup__close-image" src="images/Close.png" alt="Закрыто">
+        </a>
+        <form class="popup__form">
+          <h2 class="popup__form-title">Редактировать профиль</h2>
+          <fieldset class="popup__fieldset" handlers>
+            <input type="text" class="popup__edit" id="name"
+            name="name" placeholder="Имя" required>
+            <input type="text" class="popup__edit" id="about-me"
+            name="about-me" placeholder ="О себе" required>
+          </fieldset>
+          <a href="#" class="popup__save-button">Сохранить</a>
+        </form>
+       
+       
+      </div>
+    </div>
+    <script src="scripts/scripts.js"></script>
   </body>
 </html>
  
