@@ -12,89 +12,79 @@
   <body class="page">
     <header class="header">
       <img class="header__logo" src="images/logo.svg" alt="Логотип">
-      <hr class="header__line">
     </header>
     <main class="content">
       <section class="profile">
         <img class="profile__avatar" src="images/Kustou.png" alt="Аватарка">
         <div class="profile__info">
           <h1 class="profile__info-name">Жак-Ив Кусто</h1>
-          <a href="#" class="profile__edit-button"></a>
-          <h2 class="profile__info-job">Исследователь океанов</h2>
+          <button class="profile__edit-button" aria-label="Edition"></button>
+          <p class="profile__info-job">Исследователь океанов</p>
         </div>
-        <a href="#" class="profile__add-button"></a>
+        <button class="profile__add-button" type="submit"></button>
       </section>
       <section class="elements">
         <div class="elements__card">
           <img src="images/Vladivostok.jpg" class="elements__image" alt="Владивосток">
           <div class="elements__card-name">
             <h2 class="elements__name">Владивосток</h2>
-            <a href="#" class="elements__button"></a>
+            <button class="elements__button" aria-label="Like"></button>
           </div>
         </div>
         <div class="elements__card">
           <img src="images/Elbrus.jpg" class="elements__image" alt="Эльбрус">
           <div class="elements__card-name">
             <h2 class="elements__name">Эльбрус</h2>
-            <a href="#" class="elements__button"></a>
+            <button class="elements__button" aria-label="Like"></button>
           </div>
         </div>
         <div class="elements__card">
           <img src="images/Kareliya.jpg" class="elements__image" alt="Карелия">
           <div class="elements__card-name">
             <h2 class="elements__name">Карелия</h2>
-            <a href="#" class="elements__button"></a>
+            <button class="elements__button" aria-label="Like"></button>
           </div>
         </div>
         <div class="elements__card">
           <img src="images/Karachaevsk.png" class="elements__image" alt="Карачаево-Черкесия">
           <div class="elements__card-name">
             <h2 class="elements__name">Карачаево-Черкесия</h2>
-            <a href="#" class="elements__button"></a>
+            <button class="elements__button" aria-label="Like"></button>
           </div>
         </div>
         <div class="elements__card">
           <img src="images/Altai.jpg" class="elements__image" alt="Алтай">
           <div class="elements__card-name">
             <h2 class="elements__name">Алтай</h2>
-            <a href="#" class="elements__button"></a>
+            <button class="elements__button" aria-label="Like"></button>
           </div>
         </div>
         <div class="elements__card">
           <img src="images/Dombai.png" class="elements__image" alt="Домбай">
           <div class="elements__card-name">
             <h2 class="elements__name">Домбай</h2>
-            <a href="#" class="elements__button"></a>
+            <button class="elements__button" aria-label="Like"></button>
           </div>
         </div>
       </section>
     </main>
     <footer class="footer">
-      <h3 class="footer__text">&copy; 2020 Mesto Russia</h3>
+      <p class="footer__text">&copy; 2020 Mesto Russia</p>
     </footer>
-
-
     <div class="popup">
       <div class="popup__container">
-        <a href="#" class="popup__close-button">
-          <img class="popup__close-image" src="images/Close.png" alt="Закрыто">
-        </a>
-        <form class="popup__form">
+        <button class="popup__close-button" aria-label="Close"></button>
+        <form method="get" class="popup__form">
           <h2 class="popup__form-title">Редактировать профиль</h2>
-          <fieldset class="popup__fieldset">
-            <input type="text" class="popup__edit popup__edit_el_name" id="name"
+          <input type="text" class="popup__edit popup__edit_el_name" id="name"
             name="name" placeholder="Имя" required>
-            <input type="text" class="popup__edit popup__edit_el_about-me" id="about-me"
+          <input type="text" class="popup__edit popup__edit_el_about-me" id="about-me"
             name="about-me" placeholder ="О себе" required>
-          </fieldset>
-          <a href="#" class="popup__save-button">Сохранить</a>
+          <button class="popup__save-button" type="submit">Сохранить</button>
         </form>    
       </div>
-      <div class="elements">
-        <a href="#" class="elements__button elements__button_theme_dark" id="like"></a>
-      </div>
     </div>
-    <script src="scripts/scripts.js"></script>
+    <script src="scripts/index.js"></script>
   </body>
 </html>
  

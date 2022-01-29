@@ -9,7 +9,7 @@
     text-align: center;
     color: #FFF;
     padding: 0;
-    margin: 0 36px 37px 36px;
+    margin: 48px 36px 37px 36px;
     width: 83%;
     height: 50px;
     background: #000;
@@ -26,8 +26,10 @@
 
 @media screen and (max-width: 540px) {
     .popup__save-button {
+        font-size: 14px;
+        line-height: 17px;
         width: 84%;
         height: 46px;
-        margin: 0 22px 25px 22px;
+        margin: 45px 22px 25px 22px;
     }
 }

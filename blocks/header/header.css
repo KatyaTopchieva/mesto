@@ -8,17 +8,24 @@
     height: max-content;
     padding-top: 45px;
     margin: 0 auto;
+    border-bottom: 1px solid #545454;;
 }
 
 @media screen and (max-width: 960px) {
     .header {
-        width: 85%;
+        width: 83%;
     }
 }
 
 @media screen and (max-width: 540px) {
     .header {
-        width: 100%;
+        width: 90%;
         padding-top: 28px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .header {
+        width: 100%;
     }
 }

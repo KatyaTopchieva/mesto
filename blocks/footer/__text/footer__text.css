@@ -11,6 +11,8 @@
 
 @media screen and (max-width: 540px) {
     .footer__text {
-        margin-left: 19px;
+      margin-left: 19px;
+      font-size: 14px;
+      line-height: 16.94px;
     }
 }
