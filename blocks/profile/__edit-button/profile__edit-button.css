@@ -1,6 +1,6 @@
 .profile__edit-button {
     border: 1px solid #FFF;
-    background-image: url(../../../images/slash.png);
+    background-image: url(../../../images/slash.svg);
     background-repeat: no-repeat;
     background-color: #000;
     background-position: center;
@@ -17,10 +17,16 @@
 }
 
 
-@media screen and (max-width: 540px) {
+@media screen and (max-width: 760px) {
     .profile__edit-button {
         width: 18px;
         height: 18px;
+        align-self: end;
+    }
+}
+
+@media screen and (max-width: 540px) {
+    .profile__edit-button {
         position: absolute;
         top: 8px;
         right: 9px;
