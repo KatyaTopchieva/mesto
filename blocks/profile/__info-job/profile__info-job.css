@@ -20,5 +20,7 @@
 @media screen and (max-width: 540px) {
     .profile__info-job {
       text-align: center;
+      grid-column-start: 1;
+      grid-column-end: 3;
     }
 }
