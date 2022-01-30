@@ -2,7 +2,7 @@
     border: 1px solid #FFF;
     background-image: url(../../../images/slash.svg);
     background-repeat: no-repeat;
-    background-color: #000;
+    background-color: transparent;
     background-position: center;
     padding: 0;
     width: 24px;
@@ -10,6 +10,7 @@
     align-self: center;
     opacity: 1;
     transition: 0.5s;
+    cursor: pointer;
 }
 
 .profile__edit-button:hover {
@@ -24,7 +25,7 @@
         align-self: end;
     }
 }
-
+/*s
 @media screen and (max-width: 540px) {
     .profile__edit-button {
         position: absolute;

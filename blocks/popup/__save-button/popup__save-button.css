@@ -18,6 +18,7 @@
     transition: 0.5s;
     z-index: 2;
     box-sizing: border-box;
+    cursor: pointer;
 }
 
 .popup__save-button:hover {

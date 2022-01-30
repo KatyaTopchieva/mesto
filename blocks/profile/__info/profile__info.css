@@ -6,7 +6,6 @@
     column-gap: 18px;
     align-items: end;
     margin-left: 30px;
-    margin: 0 auto;
 }
 
 @media screen and (max-width: 760px) {
@@ -21,9 +20,11 @@
 
 @media screen and (max-width: 540px) {
     .profile__info {
-        grid-template-columns: 1fr;
+        grid-template-columns: 190px 18px;
         grid-template-rows: 26px 1fr;
         row-gap: 11px;
+        column-gap: 10px;
+        justify-content: center;
         align-items: start;
         width: 100%;
         margin-top: 22.25px;
