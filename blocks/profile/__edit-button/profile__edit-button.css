@@ -25,11 +25,3 @@
         align-self: end;
     }
 }
-/*s
-@media screen and (max-width: 540px) {
-    .profile__edit-button {
-        position: absolute;
-        top: 8px;
-        right: 9px;
-    }
-}
