@@ -147,8 +147,8 @@ buttonCloseImageCard.addEventListener('click', closePopupImage);
 function addCard(event) {
 
   const newCard = {
-    name: popupCard.querySelector('.popup_add_card_name').value,
-    link: popupCard.querySelector('.popup_add_card_image').value
+    name: popupCard.querySelector('.popup__edite_card-name').value,
+    link: popupCard.querySelector('.popup__edite_card-image').value
   };
 
   createCard(newCard);
