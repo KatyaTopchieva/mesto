@@ -3,13 +3,13 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 68.7%;
+    width: 68.8%;
     max-width: 880px;
     padding-top: 40px;
     margin: 0 auto;
   }
 
-  @media screen and (max-width: 9600px) {
+  @media screen and (max-width: 960px) {
     .content {
       width: 85%;  
     }
