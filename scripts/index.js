@@ -2,8 +2,8 @@ const profileOpenPopupButton = document.querySelector('.profile__edit-button');
 const popupProfile = document.querySelector('.popup-profile');
 const popupProfileCloseButton = popupProfile.querySelector('.popup__close-button');
 const formEditProfile = popupProfile.querySelector('.popup__form-profile');
-const nameInput = popupProfile.querySelector('.popup__edit_el_name');
-const jobInput = popupProfile.querySelector('.popup__edit_el_about-me');
+const nameInput = popupProfile.querySelector('.popup__input_el_name');
+const jobInput = popupProfile.querySelector('.popup__input_el_about-me');
 
 const profileName = document.querySelector('.profile__info-name');
 const profileJob =  document.querySelector('.profile__info-job');
@@ -28,6 +28,16 @@ function closePopupProfile () {
 
 profileOpenPopupButton.addEventListener('click', openPopupProfile);
 popupProfileCloseButton.addEventListener('click', closePopupProfile);
+
+
+function closePopupOverlay (event) {
+  if (event.target.classList.contains('popup')) {
+    closePopup(popupProfile);
+  }
+}
+
+
+
 
 function editProfile (evt) {
     evt.preventDefault ();
@@ -118,11 +128,31 @@ buttonCloseImageCard.addEventListener('click', closePopupImage);
 
 function addCard() {
   const newCard = {
-    name: popupCard.querySelector('.popup__edit_card-name').value,
-    link: popupCard.querySelector('.popup__edit_card-image').value
+    name: popupCard.querySelector('.popup__input_card-name').value,
+    link: popupCard.querySelector('.popup__input_card-image').value
   };
   renderCard(newCard);
   closePopupCard();
 }
 
 renderCards();
+
+function closePopupOverlay () {
+  popupList = Array.from(document.querySelectorAll('.popup'));
+  popupList.forEach((popupElement) => {
+
+  popupElement.addEventListener("click", function (e) {
+        const popup = e.target.classList.contains('popup');
+        if(popup) closePopup(popupElement);
+      });
+  })
+}
+
+closePopupOverlay();
+
+document.addEventListener('keydown', function(e) {
+  if( e.key === "Escape" ){ 
+    const popup = document.querySelector('.popup_opened');
+    closePopup(popup);
+  }
+});
