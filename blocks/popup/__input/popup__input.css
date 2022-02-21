@@ -11,7 +11,8 @@
   font-size: 14px;
   line-height: 17px;
   vertical-align: bottom;
-  padding: 40px 0 16px 0;
+  margin-top: 30px;
+  padding: 0;
   outline: none;
   text-overflow: ellipsis;
   white-space: nowrap;

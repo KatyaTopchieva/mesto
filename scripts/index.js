@@ -1,6 +1,5 @@
 const profileOpenPopupButton = document.querySelector('.profile__edit-button');
 const popupProfile = document.querySelector('.popup-profile');
-const popupProfileCloseButton = popupProfile.querySelector('.popup__close-button');
 const formEditProfile = popupProfile.querySelector('.popup__form-profile');
 const nameInput = popupProfile.querySelector('.popup__input_el_name');
 const jobInput = popupProfile.querySelector('.popup__input_el_about-me');
@@ -10,16 +9,33 @@ const profileJob =  document.querySelector('.profile__info-job');
 
 function openPopup (popup) {
    popup.classList.add('popup_opened');
+
+   const formSelector = popup.querySelector(_parameters.formSelector)
+   if(formSelector){
+     const inputList = Array.from(formSelector.querySelectorAll(_parameters.inputSelector));
+     const submitButtonSelector = formSelector.querySelector(_parameters.submitButtonSelector);
+     toggleButtonState(inputList, submitButtonSelector, _parameters);
+   }
+
+   document.addEventListener('keydown', doSomething)
 };
 
 function closePopup (popup) {
     popup.classList.remove('popup_opened');
+    document.removeEventListener('keydown', doSomething)
+};
+
+function doSomething (evt) {
+  if( evt.key === "Escape" ){ 
+    const popup = document.querySelector('.popup_opened');
+    closePopup(popup);
+  }
 };
 
 function openPopupProfile () {
-  openPopup(popupProfile);
   nameInput.value = profileName.textContent;
   jobInput.value = profileJob.textContent;
+  openPopup(popupProfile);
 }
 
 function closePopupProfile () {
@@ -27,17 +43,6 @@ function closePopupProfile () {
 }
 
 profileOpenPopupButton.addEventListener('click', openPopupProfile);
-popupProfileCloseButton.addEventListener('click', closePopupProfile);
-
-
-function closePopupOverlay (event) {
-  if (event.target.classList.contains('popup')) {
-    closePopup(popupProfile);
-  }
-}
-
-
-
 
 function editProfile (evt) {
     evt.preventDefault ();
@@ -50,7 +55,6 @@ formEditProfile.addEventListener('submit', editProfile);
 
 const cardOpenPopupButton = document.querySelector('.profile__add-button');
 const popupCard = document.querySelector('.popup-card');
-const cardClosePopupButton = popupCard.querySelector('.button-close-add-card');
 const formAddCard = popupCard.querySelector('.popup__form-card');
 
 const template = document.querySelector('.elements_template').content;
@@ -71,7 +75,6 @@ function savePopupCard (evt) {
 }
 
 cardOpenPopupButton.addEventListener('click', openPopupCard);
-cardClosePopupButton.addEventListener('click', closePopupCard);
 formAddCard.addEventListener('submit', savePopupCard);
 
   function renderCards () {
@@ -110,7 +113,6 @@ const popupImage = document.querySelector('.popup-image');
 const popupFormCard = popupImage.querySelector('.popup__form-card');
 const popupImageCard = popupImage.querySelector('.popup__image-card');
 const popupImageText = popupImage.querySelector('.popup__caption');
-const buttonCloseImageCard = popupImage.querySelector('.button-close-image');
 
 function openPopupImage (event) {
   openPopup(popupImage);
@@ -124,7 +126,6 @@ function closePopupImage () {
 }
 
 cardImage.addEventListener('click', openPopupImage);
-buttonCloseImageCard.addEventListener('click', closePopupImage);
 
 function addCard() {
   const newCard = {
@@ -141,18 +142,12 @@ function closePopupOverlay () {
   popupList = Array.from(document.querySelectorAll('.popup'));
   popupList.forEach((popupElement) => {
 
-  popupElement.addEventListener("click", function (e) {
-        const popup = e.target.classList.contains('popup');
-        if(popup) closePopup(popupElement);
+  popupElement.addEventListener("click", function (evt) {
+      const popup = evt.target.classList.contains('popup');
+      const popupCloseButton = evt.target.classList.contains('popup__close-button');
+      if(popup || popupCloseButton) closePopup(popupElement);
       });
   })
 }
 
 closePopupOverlay();
-
-document.addEventListener('keydown', function(e) {
-  if( e.key === "Escape" ){ 
-    const popup = document.querySelector('.popup_opened');
-    closePopup(popup);
-  }
-});
