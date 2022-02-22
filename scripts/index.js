@@ -10,22 +10,29 @@ const profileJob =  document.querySelector('.profile__info-job');
 function openPopup (popup) {
    popup.classList.add('popup_opened');
 
-   const formSelector = popup.querySelector(_parameters.formSelector)
+   const formSelector = popup.querySelector(parameters.formSelector)
    if(formSelector){
-     const inputList = Array.from(formSelector.querySelectorAll(_parameters.inputSelector));
-     const submitButtonSelector = formSelector.querySelector(_parameters.submitButtonSelector);
-     toggleButtonState(inputList, submitButtonSelector, _parameters);
-   }
-
-   document.addEventListener('keydown', doSomething)
+     const inputList = Array.from(formSelector.querySelectorAll(parameters.inputSelector));
+     const submitButtonSelector = formSelector.querySelector(parameters.submitButtonSelector);
+     toggleButtonState(inputList, submitButtonSelector, parameters);
+    }
+    document.addEventListener('keydown', closeByEscape)
 };
 
 function closePopup (popup) {
     popup.classList.remove('popup_opened');
-    document.removeEventListener('keydown', doSomething)
+    document.removeEventListener('keydown', closeByEscape)
+
+    const formSelector = popup.querySelector(parameters.formSelector)
+    if(formSelector){
+      const inputList = Array.from(formSelector.querySelectorAll(parameters.inputSelector));
+     inputList.forEach((inputElement) => {
+      hideInputError(formSelector, inputElement, parameters);
+      });
+    }
 };
 
-function doSomething (evt) {
+function closeByEscape (evt) {
   if( evt.key === "Escape" ){ 
     const popup = document.querySelector('.popup_opened');
     closePopup(popup);
@@ -134,6 +141,8 @@ function addCard() {
   };
   renderCard(newCard);
   closePopupCard();
+  popupCard.querySelector('.popup__input_card-name').value = '';
+  popupCard.querySelector('.popup__input_card-image').value = '';
 }
 
 renderCards();

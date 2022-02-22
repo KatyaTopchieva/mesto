@@ -9,7 +9,7 @@
     const errorElement = formSelector.querySelector(`.${inputElement.id}-error`);
     inputElement.classList.remove(parameters.inputErrorClass);
     errorElement.classList.remove(parameters.errorClass);
-    errorElement.textContent = '';
+    errorElement.textContent = ' ';
   };
 
 
@@ -46,10 +46,10 @@
     fieldsetList.forEach((fieldSet) => {
       setEventListeners(fieldSet, parameters);
     });
-  }); 
+  });
   };
   
-  const _parameters = {
+  const parameters = {
     formSelector: '.popup__form',
     inputSelector: '.popup__input',
     submitButtonSelector: '.popup__button',
@@ -59,7 +59,7 @@
     fieldsetSelector: '.popup__fieldset'
    };
 
-  enableValidation (_parameters);
+  enableValidation (parameters);
   
 function hasInvalidInput (inputList) {
     return inputList.some((inputElement) => {
