@@ -10,20 +10,20 @@ const profileJob =  document.querySelector('.profile__info-job');
 function openPopup (popup) {
    popup.classList.add('popup_opened');
 
-   const formSelector = popup.querySelector(parameters.formSelector)
-   if(formSelector){
-     const inputList = Array.from(formSelector.querySelectorAll(parameters.inputSelector));
-     const submitButtonSelector = formSelector.querySelector(parameters.submitButtonSelector);
-     toggleButtonState(inputList, submitButtonSelector, parameters);
-    }
-    document.addEventListener('keydown', closeByEscape)
+    const formSelector = popup.querySelector(parameters.formSelector)
+    if(formSelector){
+      const inputList = Array.from(formSelector.querySelectorAll(parameters.inputSelector));
+      const submitButtonSelector = formSelector.querySelector(parameters.submitButtonSelector);
+      toggleButtonState(inputList, submitButtonSelector, parameters);
+      }
+      document.addEventListener('keydown', closeByEscape)
 };
 
 function closePopup (popup) {
     popup.classList.remove('popup_opened');
-    document.removeEventListener('keydown', closeByEscape)
+    document.removeEventListener('keydown', closeByEscape);
 
-    const formSelector = popup.querySelector(parameters.formSelector)
+    const formSelector = popup.querySelector(parameters.formSelector);
     if(formSelector){
       const inputList = Array.from(formSelector.querySelectorAll(parameters.inputSelector));
      inputList.forEach((inputElement) => {
@@ -69,7 +69,8 @@ const cardContainer = document.querySelector('.elements');
 const cardImage = template.querySelector('.elements__image');
 
 function openPopupCard () {
-    openPopup(popupCard);
+  formAddCard.reset();
+  openPopup(popupCard);
 }
 
 function closePopupCard () {
@@ -141,8 +142,6 @@ function addCard() {
   };
   renderCard(newCard);
   closePopupCard();
-  popupCard.querySelector('.popup__input_card-name').value = '';
-  popupCard.querySelector('.popup__input_card-image').value = '';
 }
 
 renderCards();
