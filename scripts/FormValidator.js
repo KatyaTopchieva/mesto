@@ -1,10 +1,7 @@
-import {parameters} from './consts.js';
-
-
 export class FormValidator {
     constructor(parameters, form) {
         this._form = form;
-        this._parameters = parameters;
+        this._parameters = parameters;    
     }
 
     _showInputError = (inputElement, errorMessage) => {
@@ -20,9 +17,11 @@ export class FormValidator {
         const { inputErrorClass, errorClass } = this._parameters;
         const errorElement = this._form.querySelector(`.${inputElement.id}-error`);
         
-        inputElement.classList.remove(inputErrorClass);
-        errorElement.classList.remove(errorClass);
-        errorElement.textContent = ' ';
+        if(inputElement) inputElement.classList.remove(inputErrorClass);
+        if(errorElement){
+          errorElement.classList.remove(errorClass);
+          errorElement.textContent = ' ';
+        } 
       };
 
      checkInputValidity = (inputElement) => {
@@ -63,7 +62,6 @@ export class FormValidator {
           this._submitButtonSelector.disabled = false;
           };
         };
-
         
     enableValidation = () => {
         this._form.addEventListener('submit', (evt) => {
@@ -76,9 +74,7 @@ export class FormValidator {
     resetErrorsForm() {
       this._form.reset();
       this._inputList.forEach((inputElement) => {
-        this. hideInputError(inputElement);
+        this.hideInputError(inputElement);
       })
     }
-
 }
-

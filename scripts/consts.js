@@ -6,5 +6,4 @@ export const parameters = {
     inactiveButtonClass: 'popup__button_disabled',
     errorClass: 'popup__error_visible',
     fieldsetSelector: '.popup__fieldset'
-   };
-  
+ };

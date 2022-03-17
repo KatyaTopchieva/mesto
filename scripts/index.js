@@ -1,7 +1,6 @@
 import {FormValidator} from './FormValidator.js';
 import {initialCards} from './cards.js';
-import {Card, openPopupImage} from './Card.js';
-//import {openPopup, closePopup, closeByEscape} from './utils.js';
+import {Card} from './Card.js';
 
 const parameters = {
   formSelector: '.popup__form',
@@ -46,24 +45,27 @@ export function openPopup (popup, parameters) {
       const inputList = Array.from(formSelector.querySelectorAll(parameters.inputSelector));
       const submitButtonSelector = formSelector.querySelector(parameters.submitButtonSelector);
       addCardValidator.toggleButtonState(inputList, submitButtonSelector, parameters);
-     }
-     document.addEventListener('keydown', closeByEscape)
+      editProfileValidator.toggleButtonState(inputList, submitButtonSelector, parameters);
+     }     
   }
-   
-
+   document.addEventListener('keydown', closeByEscape)
 };
 
 function closePopup (popup, parameters) {
    popup.classList.remove('popup_opened');
    document.removeEventListener('keydown', closeByEscape);
-
-   const formSelector = popup.querySelector(parameters.formSelector);
-   if(formSelector){
-     const inputList = Array.from(formSelector.querySelectorAll(parameters.inputSelector));
-    inputList.forEach((inputElement) => {
-       editProfileValidator.hideInputError(formSelector, inputElement, parameters);
-     });
+   if(parameters){
+    const formSelector = popup.querySelector(parameters.formSelector);
+    if(formSelector){
+      const inputList = Array.from(formSelector.querySelectorAll(parameters.inputSelector));
+      inputList.forEach((inputElement) => {
+        editProfileValidator.hideInputError(formSelector, inputElement, parameters);
+        addCardValidator.hideInputError(formSelector, inputElement, parameters);
+      });
+     }
    }
+   addCardValidator.resetErrorsForm();
+   editProfileValidator.resetErrorsForm();
 };
 
 export function closeByEscape (evt) {
@@ -93,12 +95,11 @@ function openPopupProfile () {
   nameInput.value = profileName.textContent;
   jobInput.value = profileJob.textContent;
   openPopup(popupProfile, parameters);
-
 }
 
 function closePopupProfile () {
- 
-  closePopup(popupProfile, parameters);
+   closePopup(popupProfile, parameters);
+   editProfileValidator.resetErrorsForm();
 }
 
 profileOpenPopupButton.addEventListener('click', openPopupProfile);
@@ -119,6 +120,7 @@ function openPopupCard () {
 
 function closePopupCard () {
   closePopup(popupCard, parameters);
+  addCardValidator.resetErrorsForm();
 };
 
 function savePopupCard (evt) {
