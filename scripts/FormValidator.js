@@ -1,5 +1,5 @@
 export class FormValidator {
-    constructor(parameters, form) {
+    constructor(form, parameters) {
         this._form = form;
         this._parameters = parameters;    
     }
@@ -41,25 +41,24 @@ export class FormValidator {
 
     _setEventListeners = () => {
         this._inputList = Array.from(this._form.querySelectorAll(this._parameters.inputSelector));
-        this._submitButtonSelector = this._form.querySelector(this._parameters.submitButtonSelector);
+        this._submitButton = this._form.querySelector(this._parameters.submitButtonSelector);
        
         this.toggleButtonState ();
-        const _this = this;
         this._inputList.forEach((inputElement) => {
-          inputElement.addEventListener('input', function () {
-            _this.checkInputValidity(inputElement);
-            _this.toggleButtonState();
+          inputElement.addEventListener('input', () => {
+            this.checkInputValidity(inputElement);
+            this.toggleButtonState();
           });
         });
       };
     
     toggleButtonState = () => {
         if (this._hasInvalidInput()) {
-          this._submitButtonSelector.classList.add(this._parameters.inactiveButtonClass);
-          this._submitButtonSelector.disabled = true;
+          this._submitButton.classList.add(this._parameters.inactiveButtonClass);
+          this._submitButton.disabled = true;
         } else {
-          this._submitButtonSelector.classList.remove(this._parameters.inactiveButtonClass);
-          this._submitButtonSelector.disabled = false;
+          this._submitButton.classList.remove(this._parameters.inactiveButtonClass);
+          this._submitButton.disabled = false;
           };
         };
         
@@ -71,10 +70,11 @@ export class FormValidator {
         this._setEventListeners();    
     }
 
-    resetErrorsForm() {
-      this._form.reset();
+    resetErrorsForm = () => {
+      this.toggleButtonState();
+
       this._inputList.forEach((inputElement) => {
         this.hideInputError(inputElement);
-      })
+      });
     }
 }
