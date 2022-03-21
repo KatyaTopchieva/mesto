@@ -11,9 +11,9 @@ export class Card {
   }
 
   fillCard = () => {
-  this._cardElement.querySelector('.elements__name').textContent = this._name;
-  this._cardElement.querySelector('.elements__image').src = this._link;
-  this._cardElement.querySelector('.elements__image').alt = this._alt;
+    this._cardElement.querySelector('.elements__name').textContent = this._name;
+    this._cardImage.src = this._link;
+    this._cardImage.alt = this._alt;
   };
   
   handleDeleteCard = (evt) => {
@@ -28,7 +28,7 @@ export class Card {
     this._cardDeleteButton.addEventListener('click', this.handleDeleteCard);
     this._cardLikeButton.addEventListener('click', this.handleLike);
     this._cardImage.addEventListener('click', () => {
-      this._handleCardClick(this._name, this._link, this._alt);
+    this._handleCardClick(this._name, this._link, this._alt);
     });
   };
 
@@ -39,7 +39,7 @@ export class Card {
       this._cardLikeButton = this._cardElement.querySelector('.elements__button-like');
   
       this.fillCard();
-     this._setEventListeners();
+      this._setEventListeners();
         
       return this._cardElement;
     }
