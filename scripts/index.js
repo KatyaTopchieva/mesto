@@ -20,14 +20,18 @@ const formEditProfile = popupProfile.querySelector('.popup__form-profile');
 const formAddCard = popupCard.querySelector('.popup__form-card');
 const cardContainer = document.querySelector('.elements');
 
+const popupImage = document.querySelector('.popup-image');
+const popupImageCard = popupImage.querySelector('.popup__image-card');
+const popupImageText = popupImage.querySelector('.popup__caption');
+
 function openPopup (popup) {
   popup.classList.add('popup_opened');
   document.addEventListener('keydown', closeByEscape)
 };
 
 function closePopup (popup) {
-   popup.classList.remove('popup_opened');
-   document.removeEventListener('keydown', closeByEscape);
+  popup.classList.remove('popup_opened');
+  document.removeEventListener('keydown', closeByEscape);
 };
 
 const formValidators = {};
@@ -60,10 +64,10 @@ function closePopupProfile () {
 profileOpenPopupButton.addEventListener('click', openPopupProfile);
 
 function editProfile (evt) {
-    evt.preventDefault ();
-    profileName.textContent = nameInput.value;
-    profileJob.textContent = jobInput.value;
-    closePopupProfile();
+  evt.preventDefault ();
+  profileName.textContent = nameInput.value;
+  profileJob.textContent = jobInput.value;
+  closePopupProfile();
 };
 
 formEditProfile.addEventListener('submit', editProfile);
@@ -109,10 +113,6 @@ function addCard() {
   closePopupCard();
 };
 
-const popupImage = document.querySelector('.popup-image');
-const popupImageCard = popupImage.querySelector('.popup__image-card');
-const popupImageText = popupImage.querySelector('.popup__caption');
-
 function handleCardClick(name, link) {
   popupImageCard.src = link;
   popupImageCard.alt = name;
@@ -132,10 +132,10 @@ function handlePopupClose () {
   popupList.forEach((popupElement) => {
 
   popupElement.addEventListener('mousedown', function (evt) {
-      const popup = evt.target.classList.contains('popup');
-      const popupCloseButton = evt.target.classList.contains('popup__close-button');
-      if(popup || popupCloseButton) closePopup(popupElement);
-      });
+    const popup = evt.target.classList.contains('popup');
+    const popupCloseButton = evt.target.classList.contains('popup__close-button');
+    if(popup || popupCloseButton) closePopup(popupElement);
+    });
   });
 };
 
