@@ -1,16 +1,7 @@
-import {FormValidator} from './FormValidator.js';
-import {initialCards} from './cards.js';
-import {Card} from './Card.js';
-
-const parameters = {
-  formSelector: '.popup__form',
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__button',
-  inputErrorClass: 'popup__input_type_error',
-  inactiveButtonClass: 'popup__button_disabled',
-  errorClass: 'popup__error_visible',
-  fieldsetSelector: '.popup__fieldset'
- };
+import { FormValidator } from './FormValidator.js';
+import { initialCards } from './cards.js';
+import { Card } from './Card.js';
+import { parameters } from './consts.js';
 
 const profileOpenPopupButton = document.querySelector('.profile__edit-button');
 const popupProfile = document.querySelector('.popup-profile');
@@ -55,17 +46,15 @@ const enableValidation = (parameters) => {
 };
 
 function openPopupProfile () {
-  const name = popupProfile.querySelector('.popup__form-profile').getAttribute('name');
+  const name = formEditProfile.getAttribute('name');
   formValidators[ name ].resetErrorsForm();
   nameInput.value = profileName.textContent;
   jobInput.value = profileJob.textContent;
-  openPopup(popupProfile, parameters);
-  formValidators[ name ].enableValidation();
-  formValidators[ name ].toggleButtonState();
+  openPopup(popupProfile);
 };
 
 function closePopupProfile () {
-   closePopup(popupProfile, parameters);
+   closePopup(popupProfile);
 };
 
 profileOpenPopupButton.addEventListener('click', openPopupProfile);
@@ -81,18 +70,16 @@ formEditProfile.addEventListener('submit', editProfile);
 
 function openPopupCard () {
   formAddCard.reset();
-  const name = popupCard.querySelector('.popup__form-card').getAttribute('name');
+  const name = formAddCard.getAttribute('name');
   formValidators[ name ].resetErrorsForm();
-  openPopup(popupCard, parameters);
-  formValidators[ name  ].enableValidation();
-  formValidators[ name  ].toggleButtonState();
+  openPopup(popupCard);
+};
+
+function closePopupCard () {
+  closePopup(popupCard);
 };
 
 enableValidation(parameters);
-
-function closePopupCard () {
-  closePopup(popupCard, parameters);
-};
 
 function savePopupCard (evt) {
   evt.preventDefault ();

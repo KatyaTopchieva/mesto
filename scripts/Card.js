@@ -4,7 +4,7 @@ export class Card {
     this._cardTemplate = document.querySelector(cardTemplateSelector).content;
     this._name = data.name;
     this._link = data.link;
-    this._alt = data.name;
+    this._alt = `Изображение ${data.name}`;
     this._handleCardClick = handleCardClick;
   
     this.getCardElement();
@@ -13,7 +13,7 @@ export class Card {
   fillCard = () => {
   this._cardElement.querySelector('.elements__name').textContent = this._name;
   this._cardElement.querySelector('.elements__image').src = this._link;
-  this._cardElement.querySelector('.elements__name').textContent = this._alt;
+  this._cardElement.querySelector('.elements__image').alt = this._alt;
   };
   
   handleDeleteCard = (evt) => {
