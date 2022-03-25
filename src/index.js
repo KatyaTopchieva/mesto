@@ -1,3 +1,9 @@
+//import logo from '../images/logo.svg';
+//import kustou from '../images/kustou.png';
+//export const images = { logo, kustou };
+
+
+import '../styles/index.css';
 import { FormValidator } from './FormValidator.js';
 import { initialCards } from './cards.js';
 import { Card } from './Card.js';
