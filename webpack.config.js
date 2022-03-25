@@ -20,19 +20,21 @@ module.exports = {
     port: 8080
   },
   module: {
-    rules: [{
+    rules: [
+      {
         test: /\.js$/,
         use: 'babel-loader',
         exclude: '/node_modules/'
       },
       {
-        test: /\.(html)$/,
+        test: /\.html$/,
+        exclude: [/node_modules/, require.resolve('./index.html')],
         use: {
-            loader: 'html-loader',
-            options: {
-                attrs: ['img:src', 'link:href']
-            }
-        }
+            loader: 'file-loader',
+            query: {
+                name: '[name].[ext]'
+            },
+        },
       },
       {
         test: /\.(png|svg|jpg|gif|woff(2)?|eot|ttf|otf)$/,
@@ -42,9 +44,7 @@ module.exports = {
         test: /\.css$/,
         use: [MiniCssExtractPlugin.loader, {
             loader: 'css-loader',
-            options: {
-              importLoaders: 1
-            }
+            options: { importLoaders: 1 }
           },
           'postcss-loader'
         ]
