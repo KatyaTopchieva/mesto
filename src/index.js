@@ -7,21 +7,15 @@ import { Section } from './Section.js';
 import { PopupWithImage } from './PopupWithImage.js';
 import { openPopup, closePopup } from './Utils.js';
 import { PopupWithForm } from './PopupWithForm.js';
-import { data } from 'autoprefixer';
-
+import { UserInfo } from './UserInfo.js';
 
 const profileOpenPopupButton = document.querySelector('.profile__edit-button');
 const popupProfile = document.querySelector('.popup-profile');
 const nameInput = popupProfile.querySelector('.popup__input_el_name');
 const jobInput = popupProfile.querySelector('.popup__input_el_about-me');
 
-const profileName = document.querySelector('.profile__info-name');
-const profileJob =  document.querySelector('.profile__info-job');
-
 const cardOpenPopupButton = document.querySelector('.profile__add-button');
 const popupCard = document.querySelector('.popup-card');
-//const inputCardName = popupCard.querySelector('.popup__input_card-name');
-//const inputCardImage = popupCard.querySelector('.popup__input_card-image');
 
 const formEditProfile = popupProfile.querySelector('.popup__form-profile');
 const formAddCard = popupCard.querySelector('.popup__form-card');
@@ -47,33 +41,27 @@ enableValidation(parameters);
 function openPopupProfile () {
   const name = formEditProfile.getAttribute('name');
   formValidators[ name ].resetErrorsForm();
-  nameInput.value = profileName.textContent;
-  jobInput.value = profileJob.textContent;
-  openPopup(popupProfile);
-};
 
-//function closePopupProfile () {
-//   closePopup(popupProfile);
-//};
+  const data = userInfo.getUserInfo()
+  nameInput.value = data.name;
+  jobInput.value = data.job;
+  editProfilePopup.open();
+};
 
 profileOpenPopupButton.addEventListener('click', openPopupProfile);
 
-function editProfile (data) {
-  const { name, description } = data;
-  profileName.textContent = name;
-  profileJob.textContent = description;
+const editProfile = (data) => {
+  const { name, aboutme } = data;
+  userInfo.setUserInfo(name, aboutme);
 
   editProfilePopup.close();
 };
-
-formEditProfile.addEventListener('submit', editProfile);
-
 
 function openPopupCard () {
   formAddCard.reset();
   const name = formAddCard.getAttribute('name');
   formValidators[ name ].resetErrorsForm();
-  openPopup(popupCard);
+  addCardPopup.open();
 };
 
 cardOpenPopupButton.addEventListener('click', () => {
@@ -81,7 +69,6 @@ cardOpenPopupButton.addEventListener('click', () => {
 });
 
 const addCard = (data) => {
-  console.log('data', data)
   const card = createCard({
     name: data['card-name'],
     link: data.link
@@ -115,3 +102,5 @@ addCardPopup.setEventListeners();
 editProfilePopup.setEventListeners();
 
 section.renderItems();
+
+const userInfo = new UserInfo({ profileNameSelector: '.profile__info-name', profileJobSelector: '.profile__info-job'});
