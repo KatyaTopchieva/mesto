@@ -1,13 +1,12 @@
-import './styles/index.css';
-import { FormValidator } from './FormValidator.js';
-import { initialCards } from './cards.js';
-import { Card } from './Card.js';
-import { parameters } from './consts.js';
-import { Section } from './Section.js';
-import { PopupWithImage } from './PopupWithImage.js';
-import { openPopup, closePopup } from './Utils.js';
-import { PopupWithForm } from './PopupWithForm.js';
-import { UserInfo } from './UserInfo.js';
+import './index.css';
+import { FormValidator } from '../components/FormValidator.js';
+import { initialCards } from '../components/cards.js';
+import { Card } from '../components/Card.js';
+import { parameters } from '../components/consts.js';
+import { Section } from '../components/Section.js';
+import { PopupWithImage } from '../components/PopupWithImage.js';
+import { PopupWithForm } from '../components/PopupWithForm.js';
+import { UserInfo } from '../components/UserInfo.js';
 
 const profileOpenPopupButton = document.querySelector('.profile__edit-button');
 const popupProfile = document.querySelector('.popup-profile');

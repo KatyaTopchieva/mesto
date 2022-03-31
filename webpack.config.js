@@ -5,17 +5,16 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   entry: {
-    main: './src/index.js'
+    main: './src/pages/index.js'
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'main.js',
+    filename: 'index.js',
     publicPath: '',
   },
   mode: 'development',
   devServer: {
-    static: './',
-    //contentBase: path.resolve(__dirname, './dist'),
+    static: './',  
     open: true,
     compress: true,
     port: 8080
@@ -24,9 +23,7 @@ module.exports = {
     rules: [
       {
         test: /\.js$/,
-        // при обработке этих файлов нужно использовать babel-loader
         use: 'babel-loader',
-        // исключает папку node_modules, файлы в ней обрабатывать не нужно
         exclude: '/node_modules/'
       },
       {
@@ -39,8 +36,7 @@ module.exports = {
             loader: 'css-loader',
             options: { importLoaders: 1 }
           },
-          'postcss-loader'
-        ]
+          'postcss-loader']
       },
     ]
   },
@@ -51,6 +47,6 @@ module.exports = {
       template: 'src/index.html'
     }),
     new CleanWebpackPlugin(),
-    new MiniCssExtractPlugin() // подключение плагина для объединения файлов
+    new MiniCssExtractPlugin()
   ]
 }
