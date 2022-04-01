@@ -1,8 +1,8 @@
 import './index.css';
 import { FormValidator } from '../components/FormValidator.js';
-import { initialCards } from '../components/cards.js';
+import { initialCards } from '../utils/cards.js';
 import { Card } from '../components/Card.js';
-import { parameters } from '../components/consts.js';
+import { parameters } from '../utils/consts.js';
 import { Section } from '../components/Section.js';
 import { PopupWithImage } from '../components/PopupWithImage.js';
 import { PopupWithForm } from '../components/PopupWithForm.js';
@@ -57,7 +57,6 @@ const editProfile = (data) => {
 };
 
 function openPopupCard () {
-  formAddCard.reset();
   const name = formAddCard.getAttribute('name');
   formValidators[ name ].resetErrorsForm();
   addCardPopup.open();
@@ -88,7 +87,7 @@ function createCard(data) {
 
 function renderCard(data){
   const card = createCard(data);
-  cardContainer.prepend(card);
+  section.addItem(card);
 };
 
 const section = new Section( { items: initialCards, renderer: renderCard }, '.elements');
