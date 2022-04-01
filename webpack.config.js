@@ -9,7 +9,7 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'index.js',
+    filename: 'main.js',
     publicPath: '',
   },
   mode: 'development',
@@ -43,7 +43,6 @@ module.exports = {
 
   plugins: [
     new HtmlWebpackPlugin({
-      filename: 'src/index.html',
       template: 'src/index.html'
     }),
     new CleanWebpackPlugin(),
