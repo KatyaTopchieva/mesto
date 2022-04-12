@@ -20,7 +20,8 @@ api.getCard()
       const card = createCard({
         name: data.name,
         link: data.link,
-        likes: data.likes
+        likes: data.likes,
+        id: data._id
       });    
 
       section.addItem(card)
@@ -95,11 +96,11 @@ const addCard = (data) => {
 
   api.addCard(data['card-name'], data.link)
     .then(res => {
-      console.log('res', res)
       const card = createCard({
         name: res.name,
         link: res.link,
-        likes: res.likes
+        likes: res.likes,
+        id: res._id
       })
       section.addItem(card);
       addCardPopup.close();
@@ -111,10 +112,17 @@ function createCard(data) {
     data,
     '.elements_template',
     () => {
-    imagePopup.open(data.name, data.link, data.likes);
+    imagePopup.open(data.name, data.link);
     },
-    () => {
+    (id) => {
       confirnPopup.open();
+      confirnPopup.changeSubmitHandler(() => {
+        api.deleteCard(id)
+          .then(res => {
+            card.deleteCard();
+            confirnPopup.close();
+          })
+      })
     }
   )
   const cardElement = card.getCardElement();
@@ -131,9 +139,7 @@ const section = new Section( { items: [], renderer: renderCard }, '.elements');
 const imagePopup = new PopupWithImage('.popup-image');
 const addCardPopup = new PopupWithForm('.popup-card', addCard);
 const editProfilePopup = new PopupWithForm('.popup-profile', editProfile);
-const confirnPopup = new PopupWithForm('.popup-delete-confirn', () => {
-  console.log('delete')
-});
+const confirnPopup = new PopupWithForm('.popup-delete-confirn');
 
 imagePopup.setEventListeners();
 addCardPopup.setEventListeners();

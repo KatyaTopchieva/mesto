@@ -5,6 +5,7 @@ export class Card {
     this._name = data.name;
     this._link = data.link;
     this._likes = data.likes;
+    this._id = data.id;
     
     this._alt = `Изображение ${data.name}`;
     this._handleImageClick = handleImageClick;
@@ -19,16 +20,14 @@ export class Card {
     this._cardImage.alt = this._alt;
   };
 
-  // _handleDeleteCard = (evt) => {
-  //   evt.target.closest('.elements__card').remove();
-  // };
-  
   _handleLike = () => {
     this._cardLikeButton.classList.toggle('elements__button-like_active');
   };
 
   _setEventListeners() {
-    this._cardDeleteButton.addEventListener('click', this._handleDeleteClick);
+    this._cardDeleteButton.addEventListener('click', () => {
+      this._handleDeleteClick(this._id)
+    });
     this._cardLikeButton.addEventListener('click', this._handleLike);
     this._cardImage.addEventListener('click', () => {
       this._handleImageClick();
@@ -39,6 +38,11 @@ export class Card {
     const cardLikeCount = this._cardElement.querySelector('.elements__like-count');
     cardLikeCount.textContent = this._likes.length;
   }
+
+  deleteCard() {
+    this._cardElement.delete();
+    this._cardElement = null;
+  };
 
   getCardElement() {
       this._cardElement = this._cardTemplate.cloneNode(true);

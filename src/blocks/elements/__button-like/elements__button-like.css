@@ -4,10 +4,10 @@
     background-position: center;
     background-repeat: no-repeat;
     background-color: transparent;
-    width: 24px;
+    background-size: contain;
+    width: 22px;
     height: 19px;
-    margin-right: 20px;
-    margin-top: 3px;
+    margin: 0;
     padding: 0;
     opacity: 1;
     transition: 0.5s;
