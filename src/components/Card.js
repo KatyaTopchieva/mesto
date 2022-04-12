@@ -40,7 +40,7 @@ export class Card {
   }
 
   deleteCard() {
-    this._cardElement.delete();
+    this._cardElement.remove();
     this._cardElement = null;
   };
 
