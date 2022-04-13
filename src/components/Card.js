@@ -39,9 +39,10 @@ export class Card {
     cardLikeCount.textContent = this._likes.length;
   }
 
-  deleteCard() {
-    this._cardElement.remove();
-    this._cardElement = null;
+  deleteCard(evt) {
+    evt.target.closest('.elements__card').remove();
+    // this._cardElement.remove();
+    // this._cardElement = null;
   };
 
   getCardElement() {
