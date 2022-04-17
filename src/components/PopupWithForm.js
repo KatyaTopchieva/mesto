@@ -31,6 +31,10 @@ export class PopupWithForm extends Popup {
         this._handleSubmit = newSubmitHandler;
     }
 
+    changeSubmitAvatarHandler(newchangeSubmitAvatarHandler) {
+        this._handleSubmit = newchangeSubmitAvatarHandler;
+    }
+
     close() {
         super.close();
         this._form.reset();

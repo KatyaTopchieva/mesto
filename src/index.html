@@ -14,7 +14,10 @@
     </header>
     <main class="content">
       <section class="profile">
-        <img class="profile__avatar" src="<%=require('./images/Kustou.png')%>" alt="Аватарка">
+        <div class="profile__avatar-container">
+          <button class="profile__avatar-button" type="button"></button>
+          <img class="profile__avatar" src="<%=require('./images/Kustou.png')%>" alt="Аватарка">
+        </div>
         <div class="profile__info">
           <h1 class="profile__info-name"></h1>
           <button class="profile__edit-button" type="button"></button>
@@ -78,6 +81,26 @@
               novalidate>
           <h2 class="popup__form-title">Вы уверены?</h2>
           <button class="popup__button" type="submit">Да</button>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+    <div class="popup popup-edit-avatar">
+      <div class="popup__container">
+        <button class="popup__close-button" type="button"></button>
+        <form class="popup__form popup__form-edit-avatar popup__form_height_average" name="form-delete-confirn"
+              novalidate>
+          <h2 class="popup__form-title">Обновить аватар</h2>
+          <fieldset class="popup__fieldset">
+            <div class="popup__input-container">
+              <input type="url" class="popup__input popup__input-edit-avatar"
+              id="linkAvatar-input" name="linkAvatar" placeholder ="Ссылка на аватар" required>
+              <span class="popup__error link-input-error"></span>
+            </div>
+            <div class="popup__button-container">
+              <button class="popup__button" type="submit">Сохранить</button>
+              <button class="popup__button popup__button_condition_saving" type="submit">Сохранение...</button>
+            </div>
           </fieldset>
         </form>
       </div>
