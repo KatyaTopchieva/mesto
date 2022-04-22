@@ -48,8 +48,11 @@
                 required minlength="2" maxlength="200">
               <span class="popup__error about-me-input-error"></span>
             </div>
-          </fieldset>
-          <button class="popup__button" type="submit">Сохранить</button>
+            <div class="popup__button-container">
+              <button class="popup__button" type="submit">Сохранить</button>
+              <button class="popup__button popup__button_condition_saving" type="submit">Сохранение...</button>
+            </div>
+        </fieldset>
         </form>
       </div>
     </div>
@@ -69,7 +72,10 @@
               id="link-input" name="link" placeholder ="Ссылка на картинку" required>
               <span class="popup__error link-input-error"></span>
             </div>
-            <button class="popup__button" type="submit">Сохранить</button>
+            <div class="popup__button-container">
+              <button class="popup__button" type="submit">Сохранить</button>
+              <button class="popup__button popup__button_condition_saving" type="submit">Сохранение...</button>
+            </div>
           </fieldset>
         </form>
       </div>
@@ -93,8 +99,8 @@
           <fieldset class="popup__fieldset">
             <div class="popup__input-container">
               <input type="url" class="popup__input popup__input-edit-avatar"
-              id="linkAvatar-input" name="linkAvatar" placeholder ="Ссылка на аватар" required>
-              <span class="popup__error link-input-error"></span>
+              id="link-avatar-input" name="linkAvatar" placeholder ="Ссылка на аватар" required>
+              <span class="popup__error link-avatar-input-error"></span>
             </div>
             <div class="popup__button-container">
               <button class="popup__button" type="submit">Сохранить</button>

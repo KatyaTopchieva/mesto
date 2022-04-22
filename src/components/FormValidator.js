@@ -1,7 +1,7 @@
 export class FormValidator {
     constructor(form, parameters) {
         this._form = form;
-        this._parameters = parameters;    
+        this._parameters = parameters; 
     }
 
     _showInputError = (inputElement, errorMessage) => {

@@ -6,12 +6,12 @@ export class PopupWithForm extends Popup {
 
         this._handleSubmit = handleSubmit;
         this._form = this._popup.querySelector('.popup__form');
+        this._inputs = [...this._form.querySelectorAll('.popup__input')]; 
     }
 
     _getInputValues() {
-        const inputs = [...this._form.querySelectorAll('.popup__input')];
         const values = {};
-        inputs.forEach((input) => {
+        this._inputs.forEach((input) => {
             values[input.name] = input.value;           
         }); 
         
@@ -29,10 +29,6 @@ export class PopupWithForm extends Popup {
 
     changeSubmitHandler(newSubmitHandler) {
         this._handleSubmit = newSubmitHandler;
-    }
-
-    changeSubmitAvatarHandler(newchangeSubmitAvatarHandler) {
-        this._handleSubmit = newchangeSubmitAvatarHandler;
     }
 
     close() {
