@@ -54,7 +54,6 @@ export class Card {
     const cardLikeCount = this._cardElement.querySelector('.elements__like-count');
     cardLikeCount.textContent = this._likes.length;
 
-    
     if(this.isLiked()) {
       this._fillLike();
     } else {
