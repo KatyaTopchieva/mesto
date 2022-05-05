@@ -19,30 +19,60 @@ const userInfo = new UserInfo(
   const confirnPopup = new PopupWithForm('.popup-delete-confirn');
   const editAvatarPopup = new PopupWithForm('.popup-edit-avatar', (data) => editAvatar(data));
 
-api.getProfile()
-  .then(res => {
-    userInfo.setUserInfo(res.name, res.about, res.avatar);
+// api.getProfile()
+//   .then(res => {
+//     userInfo.setUserInfo(res.name, res.about, res.avatar);
 
-    userId = res._id;
-  })
-  .catch(err => console.log(`Ошибка: ${err}`))
+//     userId = res._id;
+//   })
+//   .catch(err => console.log(`Ошибка: ${err}`))
 
-api.getCard()
-  .then(cardList => {
-    cardList.forEach(data => {
-      const card = createCard({
-        name: data.name,
-        link: data.link,
-        likes: data.likes,
-        id: data._id,
-        userId: userId,
-        ownerId: data.owner._id
-      }); 
+// api.getCard()
+//   .then(cardList => {
+//     cardList.forEach(data => {
+//       const card = createCard({
+//         name: data.name,
+//         link: data.link,
+//         likes: data.likes,
+//         id: data._id,
+//         userId: userId,
+//         ownerId: data.owner._id
+//       }); 
 
-      section.addItem(card);
-    })
-  })
-  .catch(err => console.log(`Ошибка: ${err}`))
+//       section.addItem(card);
+//     })
+//   })
+//   .catch(err => console.log(`Ошибка: ${err}`))
+
+  Promise.all([
+    api.getProfile(),
+    api.getCard()
+  ])
+ .then((values) => {
+        let res = values[0];
+        userInfo.setUserInfo(res.name, res.about, res.avatar);
+        userId = res._id;
+
+        let cardList = values[1];
+        cardList.forEach(data => {
+          const card = createCard({
+            name: data.name,
+            link: data.link,
+            likes: data.likes,
+            id: data._id,
+            userId: userId,
+            ownerId: data.owner._id
+          }); 
+    
+          section.addItem(card);
+        })
+      }
+      )
+.catch((err)=>{ //попадаем сюда если один из промисов завершаться ошибкой
+
+    console.log(err);
+
+}) 
 
   const editAvatar = (data) => {
     const avatarBtnSeving = formEditAvatar.querySelector('.popup__button_condition_saving');
@@ -182,7 +212,8 @@ const addCard = (data) => {
   cardBtnSeving.style.visibility = 'visible';
   api.addCard(data['card-name'], data.link)
     .then(res => {
-      renderCard(data);
+      if(res._id) res.id = res._id;
+      renderCard(res);
       addCardPopup.close();
     })
     .catch(err => console.log(`Ошибка: ${err}`))

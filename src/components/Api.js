@@ -33,7 +33,6 @@ class Api {
         .then(res => res.ok ? res.json() : Promise.reject(res.status))
         .catch(console.log)
     }
-
     
     addCard(name, link) {
         return fetch(`${this._baseUrl}/cards`, {
@@ -89,9 +88,9 @@ class Api {
   }
   
   export const api = new Api({
-    baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-39',
+    baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-40',
     headers: {
-      authorization: '56062737-a991-4dc5-adac-8bdf4ec818a8',
+      authorization: 'cf2785f2-540e-4e47-9cc1-44819bf11821',
       'Content-Type': 'application/json'
     }
   });
