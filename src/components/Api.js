@@ -9,7 +9,6 @@ class Api {
             headers: this._headers
         })
         .then(res => res.ok ? res.json() : Promise.reject(res.status))
-        .catch(console.log)
     }
 
     getCard() {
@@ -17,7 +16,6 @@ class Api {
             headers: this._headers
         })
         .then(res => res.ok ? res.json() : Promise.reject(res.status))
-        .catch(console.log)
     }
 
     
@@ -31,7 +29,6 @@ class Api {
           })
         })
         .then(res => res.ok ? res.json() : Promise.reject(res.status))
-        .catch(console.log)
     }
     
     addCard(name, link) {
@@ -44,7 +41,6 @@ class Api {
           })
         })
         .then(res => res.ok ? res.json() : Promise.reject(res.status))
-        .catch(console.log)
     }
 
     deleteCard(id) {
@@ -53,7 +49,6 @@ class Api {
           headers: this._headers
          })
       .then(res => res.ok ? res.json() : Promise.reject(res.status))
-      .catch(console.log)
     }
 
     deleteLike(id) {
@@ -62,7 +57,6 @@ class Api {
           headers: this._headers
          })
       .then(res => res.ok ? res.json() : Promise.reject(res.status))
-      .catch(console.log)
     }
 
     addLike(id) {
@@ -71,7 +65,6 @@ class Api {
           headers: this._headers
          })
       .then(res => res.ok ? res.json() : Promise.reject(res.status))
-      .catch(console.log)
     }
 
     editAvatar(avatar) {
@@ -83,7 +76,6 @@ class Api {
     })
        })
     .then(res => res.ok ? res.json() : Promise.reject(res.status))
-    .catch(console.log)
     }
   }
   

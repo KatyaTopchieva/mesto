@@ -19,41 +19,16 @@ const userInfo = new UserInfo(
   const confirnPopup = new PopupWithForm('.popup-delete-confirn');
   const editAvatarPopup = new PopupWithForm('.popup-edit-avatar', (data) => editAvatar(data));
 
-// api.getProfile()
-//   .then(res => {
-//     userInfo.setUserInfo(res.name, res.about, res.avatar);
-
-//     userId = res._id;
-//   })
-//   .catch(err => console.log(`Ошибка: ${err}`))
-
-// api.getCard()
-//   .then(cardList => {
-//     cardList.forEach(data => {
-//       const card = createCard({
-//         name: data.name,
-//         link: data.link,
-//         likes: data.likes,
-//         id: data._id,
-//         userId: userId,
-//         ownerId: data.owner._id
-//       }); 
-
-//       section.addItem(card);
-//     })
-//   })
-//   .catch(err => console.log(`Ошибка: ${err}`))
-
   Promise.all([
     api.getProfile(),
     api.getCard()
   ])
  .then((values) => {
-        let res = values[0];
+        const res = values[0];
         userInfo.setUserInfo(res.name, res.about, res.avatar);
         userId = res._id;
 
-        let cardList = values[1];
+        const cardList = values[1];
         cardList.forEach(data => {
           const card = createCard({
             name: data.name,
@@ -64,15 +39,13 @@ const userInfo = new UserInfo(
             ownerId: data.owner._id
           }); 
     
-          section.addItem(card);
-        })
-      }
-      )
-.catch((err)=>{ //попадаем сюда если один из промисов завершаться ошибкой
-
+          section.renderItems(cardList);
+      })
+    }
+  )
+  .catch((err)=>{
     console.log(err);
-
-}) 
+  }) 
 
   const editAvatar = (data) => {
     const avatarBtnSeving = formEditAvatar.querySelector('.popup__button_condition_saving');
@@ -174,7 +147,7 @@ function createCard(data) {
     data,
     '.elements_template',
     () => {
-    imagePopup.open(data.name, data.link);
+    imagePopup.open(data.name, data.link, data.alt);
     },
     (id) => {
       confirnPopup.open();
@@ -212,7 +185,6 @@ const addCard = (data) => {
   cardBtnSeving.style.visibility = 'visible';
   api.addCard(data['card-name'], data.link)
     .then(res => {
-      if(res._id) res.id = res._id;
       renderCard(res);
       addCardPopup.close();
     })
@@ -223,8 +195,15 @@ const addCard = (data) => {
 };
 
 function renderCard(data){
-  const card = createCard(data);
-  section.addItem(card);
+  const card = createCard({ 
+    name: data.name, 
+    link: data.link, 
+    likes: data.likes, 
+    id: data._id, 
+    userId: userId, 
+    ownerId: data.owner._id 
+  });
+section.addItem(card);
 };
 
 const section = new Section( { items: [], renderer: renderCard }, '.elements');
