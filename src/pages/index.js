@@ -29,20 +29,9 @@ const userInfo = new UserInfo(
         userId = res._id;
 
         const cardList = values[1];
-        cardList.forEach(data => {
-          const card = createCard({
-            name: data.name,
-            link: data.link,
-            likes: data.likes,
-            id: data._id,
-            userId: userId,
-            ownerId: data.owner._id
-          }); 
-    
-          section.renderItems(cardList);
+        section.renderItems(cardList);
       })
-    }
-  )
+  
   .catch((err)=>{
     console.log(err);
   }) 
