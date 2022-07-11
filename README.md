@@ -4,6 +4,6 @@
 Редактирование профиля, добавление и удаление карточек мест.
 
 ### Стэк
-HTML, CSS, JavaScript.
+HTML, CSS, JavaScript, БЭМ (Nested).
 
 Сайт доступен для просмотра: https://katyatopchieva.github.io/mesto/
